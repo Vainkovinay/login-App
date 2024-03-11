@@ -1,39 +1,61 @@
-import React from 'react';
-import {Text, TextInput, View, Image, Button, Alert} from 'react-native';
-import { TextInput } from 'react-native-paper';
+import React, { useState } from 'react';
+import {Text, View, Image, Button, Alert} from 'react-native';
+import { TextInput } from "react-native";
 
 const userinput =()=>{
+  const [name, setName]=useState("");
   return(
     <View style={{
-      backgroundColor: '#B0E0E6',
-      paddingVertical: 6,
+      padding: 10,
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'center',
-    }}> 
-    <Image 
-      source={{
-        uri: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg',
-      }}
-      style = {{ width:300,height:240}} 
+    }}>
+
+    <Text style={{fontSize: 35,fontFamily: '',paddingTop: 100}}>Login Form</Text>
+    <View style={{backgroundColor: 'blue'}}/>
     
-    />
-     <View style={{
-      backgroundColor: 'black',}}/>
-    <Text style={{fontSize: 20,fontFamily: ''}}>Welcome to my First Application</Text>
-    <TextInput 
-      style={{
+    <Text style={{fontSize: 25,fontFamily: '',paddingTop: 100}}>Enter your Fullname</Text>
+    <TextInput id='name' 
+        style={{
         height:50,
         width:200,
         borderColor: 'grey',
-        borderWidth: 3,
-        textAlign:'center'
+        borderWidth: 2,
+        textAlign:'center',
+        padding: 10,
     }}
-    placeholder='Enter your name here..'/>
-    <Button
-      onPress={() => Alert.alert('You have Successfully Submitted your name!!')}
-      title='Click Here!'
-      color={'green'}
+    placeholder='Full Name'/>
+    <View style={{backgroundColor: 'red'}}/>
+    <Text style={{fontSize: 25,fontFamily: '',paddingTop:20}}>Enter yout Email-ID</Text>
+    <TextInput id='email' style={{
+        height:50,
+        width:200,
+        borderColor: 'grey',
+        borderWidth: 2,
+        textAlign:'center',
+    }}
+      keyboardType='email-address'
+      placeholder='Email-ID'/>
+    
+    <View style={{backgroundColor: 'blue'}}/>
+    <Text style={{fontSize: 25,fontFamily: '',paddingTop:20}}>Enter your Number</Text>
+    <TextInput id='number' 
+        style={{
+        height:50,
+        width:200,
+        borderColor: 'grey',
+        borderWidth: 2,
+        textAlign:'center',
+    }} 
+      keyboardType='phone-pad'
+      placeholder='phone number'/>
+    <Button style={{padding:80}}
+      title='Submit' 
+      onclick={()=>{}}
+    />
+
+    <Button style={{paddingTop:30}}
+      title='Add' 
     />
     </View>
   );
