@@ -1,25 +1,31 @@
 import React, { useState } from 'react';
-import {Text, View, Image, Button, Alert} from 'react-native';
-import { TextInput } from "react-native-paper";
+import {Text, View, Image, Alert} from 'react-native';
+import { TextInput, Button } from "react-native-paper";
 
 const userinput =()=>{
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit =()=>{
+    setSubmitted(true);
+  }
+  
   return(
     <View style={{ 
       padding: 10,
       flex: 1,
       alignItems: 'center',
-      backgroundColor: 'lightgrey',
+      backgroundColor: 'skyblue',
     }}>
 
-    <Text style={{fontSize: 35,fontFamily: '',paddingTop: 100,fontStyle: 'italic'}}>Login</Text>
+    <Text style={{fontSize: 35,fontFamily: '',paddingTop: 100,fontStyle: 'italic',fontWeight: 'bold'}}>Login</Text>
     
-    <Text style={{fontSize: 20,fontFamily: '',paddingTop: 50}}>Enter your Fullname</Text>
-    <TextInput id='name' left={<TextInput.Icon icon="account" />} 
+    <Text style={{fontSize: 20,fontFamily: '',paddingTop: 50,textAlign:'left'}}>Username</Text>
+    <TextInput left={<TextInput.Icon icon="account"/>} 
         style={{
-        height:40,
+        height:35,
         width:170,
         borderColor: 'grey',
         borderWidth: 1.5,
@@ -27,12 +33,12 @@ const userinput =()=>{
         padding: 7, 
     }}
     onSubmitEditing={(value) => setName(value.nativeEvent.text)}
-    placeholder='Full Name'/>
+    placeholder='Username'/>
     
-    <Text style={{fontSize: 20,fontFamily: '',paddingTop:20}}>Enter your Email-ID</Text>
-    <TextInput id='email' left={<TextInput.Icon icon="account" />}
+    <Text style={{fontSize: 20,fontFamily: '',paddingTop:20}}>Email</Text>
+    <TextInput left={<TextInput.Icon icon="mail" />}
         style={{
-        height:40,
+        height:35,
         width:170,
         borderColor: 'grey',
         borderWidth: 1.5,
@@ -42,17 +48,41 @@ const userinput =()=>{
       onSubmitEditing={(value)=>setEmail(value.nativeEvent.text)}
       keyboardType='email-address'
       placeholder='Email-ID'/>
-    
-    <Button style={{paddingTop:80,}}
-      title='Submit' 
-      onPress={()=>Alert.alert({name})}
-    />
 
-    <Text>{name}</Text>
-    <Text>{email}</Text>
-    <Text>{number}</Text>
+    <Text style={{fontSize: 20,fontFamily: '',paddingTop:20}}>Password</Text>  
+    <TextInput left={<TextInput.Icon icon="form-textbox-password" />} 
+      style={{
+        height:35,
+        width:170,
+        borderColor: 'grey',
+        borderWidth: 1.5,
+        textAlign:'center',
+        padding: 7,
+      }}
+      onSubmitEditing={(value)=>setNumber(value.nativeEvent.text)}
+      secureTextEntry
+      placeholder='password'>
+    </TextInput>
+   
+     <Button 
+        rippleColor='blue'
+        icon="" 
+        mode="contained" 
+        style={{backgroundColor: 'blue',marginTop: 20}} 
+        onPress={handleSubmit}>
+          Submit
+      </Button>
+
+      {submitted && (
+        <View style={{marginTop: 20}}>
+          <Text>Username: {name}</Text>
+          <Text>Email-ID: {email}</Text>
+          <Text>Password: {number}</Text>
+        </View>
+      )}
 
     </View>
+    
   );
 };
 
