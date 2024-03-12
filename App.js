@@ -1,62 +1,77 @@
 import React, { useState } from 'react';
 import {Text, View, Image, Button, Alert} from 'react-native';
-import { TextInput } from "react-native";
+import { TextInput } from "react-native-paper";
 
 const userinput =()=>{
-  const [name, setName]=useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [number, setNumber] = useState('');
   return(
-    <View style={{
+    <View style={{ 
       padding: 10,
       flex: 1,
       alignItems: 'center',
+      backgroundColor: 'lightgrey',
     }}>
 
     <Text style={{fontSize: 35,fontFamily: '',paddingTop: 100}}>Login Form</Text>
-    <View style={{backgroundColor: 'blue'}}/>
     
-    <Text style={{fontSize: 25,fontFamily: '',paddingTop: 100}}>Enter your Fullname</Text>
-    <TextInput id='name' 
+    <Text style={{fontSize: 20,fontFamily: '',paddingTop: 50}}>Enter your Fullname</Text>
+    <TextInput id='name' left={<TextInput.Icon icon="account" />} 
         style={{
-        height:50,
-        width:200,
+        height:40,
+        width:170,
         borderColor: 'grey',
-        borderWidth: 2,
+        borderWidth: 1.5,
         textAlign:'center',
-        padding: 10,
+        padding: 7, 
     }}
+    onSubmitEditing={(value) => setName(value.nativeEvent.text)}
     placeholder='Full Name'/>
-    <View style={{backgroundColor: 'red'}}/>
-    <Text style={{fontSize: 25,fontFamily: '',paddingTop:20}}>Enter yout Email-ID</Text>
+    
+    <Text style={{fontSize: 20,fontFamily: '',paddingTop:20}}>Enter your Email-ID</Text>
     <TextInput id='email' style={{
-        height:50,
-        width:200,
+        height:40,
+        width:170,
         borderColor: 'grey',
-        borderWidth: 2,
+        borderWidth: 1.5,
         textAlign:'center',
+        padding: 7, 
     }}
+      onSubmitEditing={(value)=>setEmail(value.nativeEvent.text)}
       keyboardType='email-address'
       placeholder='Email-ID'/>
     
-    <View style={{backgroundColor: 'blue'}}/>
-    <Text style={{fontSize: 25,fontFamily: '',paddingTop:20}}>Enter your Number</Text>
+    <Text style={{fontSize: 20,fontFamily: '',paddingTop:20}}>Enter your Number</Text>
     <TextInput id='number' 
         style={{
-        height:50,
-        width:200,
-        borderColor: 'grey',
-        borderWidth: 2,
-        textAlign:'center',
-    }} 
-      keyboardType='phone-pad'
-      placeholder='phone number'/>
-    <Button style={{padding:80}}
+          height:40,
+          width:170,
+          borderColor: 'grey',
+          borderWidth: 1.5,
+          textAlign:'center',
+          padding: 7, 
+    }}
+    onSubmitEditing={(value)=> setNumber(value.nativeEvent.text)} 
+    keyboardType='phone-pad'
+    placeholder='phone number'/>
+
+    <TextInput label="Username" left={<TextInput.Icon icon="account" />} />
+    <TextInput
+      label="Password"
+      secureTextEntry
+      left={<TextInput.Icon name="form-textbox-password" />}
+    />
+    
+    <Button style={{paddingTop:80,}}
       title='Submit' 
-      onclick={()=>{}}
+      onPress={()=>Alert.alert({name})}
     />
 
-    <Button style={{paddingTop:30}}
-      title='Add' 
-    />
+    <Text>{name}</Text>
+    <Text>{email}</Text>
+    <Text>{number}</Text>
+
     </View>
   );
 };
