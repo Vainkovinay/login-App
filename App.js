@@ -14,7 +14,7 @@ const userinput =()=>{
       backgroundColor: 'lightgrey',
     }}>
 
-    <Text style={{fontSize: 35,fontFamily: '',paddingTop: 100}}>Login Form</Text>
+    <Text style={{fontSize: 35,fontFamily: '',paddingTop: 100,fontStyle: 'italic'}}>Login</Text>
     
     <Text style={{fontSize: 20,fontFamily: '',paddingTop: 50}}>Enter your Fullname</Text>
     <TextInput id='name' left={<TextInput.Icon icon="account" />} 
@@ -30,7 +30,8 @@ const userinput =()=>{
     placeholder='Full Name'/>
     
     <Text style={{fontSize: 20,fontFamily: '',paddingTop:20}}>Enter your Email-ID</Text>
-    <TextInput id='email' style={{
+    <TextInput id='email' left={<TextInput.Icon icon="account" />}
+        style={{
         height:40,
         width:170,
         borderColor: 'grey',
@@ -41,27 +42,6 @@ const userinput =()=>{
       onSubmitEditing={(value)=>setEmail(value.nativeEvent.text)}
       keyboardType='email-address'
       placeholder='Email-ID'/>
-    
-    <Text style={{fontSize: 20,fontFamily: '',paddingTop:20}}>Enter your Number</Text>
-    <TextInput id='number' 
-        style={{
-          height:40,
-          width:170,
-          borderColor: 'grey',
-          borderWidth: 1.5,
-          textAlign:'center',
-          padding: 7, 
-    }}
-    onSubmitEditing={(value)=> setNumber(value.nativeEvent.text)} 
-    keyboardType='phone-pad'
-    placeholder='phone number'/>
-
-    <TextInput label="Username" left={<TextInput.Icon icon="account" />} />
-    <TextInput
-      label="Password"
-      secureTextEntry
-      left={<TextInput.Icon name="form-textbox-password" />}
-    />
     
     <Button style={{paddingTop:80,}}
       title='Submit' 
